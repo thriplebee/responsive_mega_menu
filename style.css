@@ -1,0 +1,254 @@
+/* ----Reset---- */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/* ----Common---- */
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+li{
+    list-style: none;
+    font-size: 1rem;
+}
+
+/* Navigation */
+nav{
+    background-color: #c0392b;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+    height: 65px;
+    line-height: 65px;
+}
+
+nav .wrapper{
+    max-width: 1250px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+}
+
+/* Logo */
+.wrapper .logo{
+    font-size: 1.5rem;
+    background-color: #fff;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 20px;
+}
+
+.logo span{
+    background-color: #1a1a1a;
+    color: #fff;
+    padding: 0 10px;
+}
+
+/* Menu Items */
+.wrapper .nav-links{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-links > li{
+    padding: 0 25px;
+}
+
+.nav-links > li > a{
+    transition: all 0.3s ease-in;
+}
+
+.nav-links > li > a:hover{
+    padding-bottom: 5px;
+    border-bottom: 2px #fff solid;
+}
+
+/* Drop Down Menu */
+.nav-links .drop{
+    background-color: #c0392b;
+    width: 150px;
+    line-height: 50px;
+    position: absolute;
+    transition: all 0.3s ease-in;
+    /* Hidden */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.drop li a{
+    width: 100%;
+    padding-left: 20px;
+    display: block;
+    font-size: 0.9rem;
+    transition: all 0.3s ease-in;
+}
+
+.drop li a:hover{
+    background-color: #1a1a1a;
+}
+
+.nav-links > li:hover .drop{
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Mega Menu */
+.nav-links .mega-box{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    transition: all 0.3s ease-in;
+    /* Hidden */
+    opacity: 0;
+    visibility: hidden;
+}
+
+.mega-box .content{
+    background-color: #c0392b;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 25px 50px;
+}
+
+.content .row{
+    width: calc(20% - 30px);
+    line-height: 50px;
+}
+
+.row img{
+    max-width: 250px;
+    min-width: 170px;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.row header{
+    color: #fff;
+    font-size: 1rem;
+    border-bottom: 1px solid #fff;
+}
+
+.row .mega-links li a{
+    font-size: 0.9rem;
+    width: 100%;
+    display: block;
+    padding-left: 20px;
+    transition: all 0.3s ease-in;
+}
+
+.row .mega-links li a:hover{
+    background-color: #1a1a1a;
+}
+
+.nav-links > li:hover .mega-box{
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Menu Show & Hide */
+input{
+    display: none;
+}
+
+label{
+    cursor: pointer;
+}
+
+.mbtn{
+    position: absolute;
+    right: 5%;
+    top: 2%;
+    display: none;
+}
+
+label i{
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+/* ----Responsive---- */
+@media(max-width: 1000px){
+    /* Logo */
+    .wrapper .logo{
+        position: fixed;
+        top: 12px;
+    }
+
+    /* Menu Items */
+    .wrapper .nav-links{
+        position: fixed;
+        background-color: #c0392b;
+        height: 100vh;
+        width: 100%;
+        max-width: 350px;
+        display: block;
+        top: 0;
+        left: -100%;
+        line-height: 70px;
+        overflow-y: auto;
+        transition: all 0.3s ease-in;
+    }
+
+    .nav-links > li{
+        margin: 15px 10px;
+    }
+
+    .nav-links > li > a{
+        padding: 0 20px;
+        display: block;
+        font-size: 1.1rem;
+    }
+
+    /* Drop Down & Mega menu */
+    .nav-links .drop,
+    .nav-links .mega-box{
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        padding-left: 20px;
+        width: 100%;
+        /* Hidden */
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    #service:checked ~ .nav-links .drop,
+    #categories:checked ~ .nav-links .mega-box{
+        max-height: 100%;
+    }
+
+    .mega-box .content{
+        flex-direction: column;
+    }
+
+    .content .row{
+        width: 100%;
+    }
+
+    /* Menu Show & Hide */
+    .sbtn{
+        display: block;
+    }
+
+    #show-mbtn:checked ~ .nav-links{
+        left: 0;
+    }
+
+    #show-mbtn:checked ~ .sbtn{
+        display: none;
+    }
+
+    #show-mbtn:checked ~ .cbtn{
+        display: block;
+    }
+}
